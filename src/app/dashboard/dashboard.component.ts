@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
     this.getMovies();
   }
 
-  private getMovies(){
+  private getMovies() {
     this.apiService.getMovies().subscribe(data => {
       this.movies = data;
     }, err => {
