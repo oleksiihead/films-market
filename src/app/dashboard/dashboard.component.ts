@@ -30,9 +30,9 @@ export class DashboardComponent implements OnInit {
       this.movies = [];
       if(Array.isArray(data)) {
         this.movies = data;
-      }
-      else {
-        this.movies.push(data);
+        else {
+          this.movies.push(data);
+        }
       }
     }, err => {
       this.movies = [];
