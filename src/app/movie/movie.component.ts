@@ -15,7 +15,7 @@ export class MovieComponent implements OnInit {
 
   constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute) {
     this.apiService.getMovie(this.activatedRoute.snapshot.params.id).subscribe(data => {
-       data.actors.shift();
+      data.actors.shift();
       this.movie = data;
     }, err => {
       this.movie = {};
