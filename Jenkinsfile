@@ -12,17 +12,17 @@ node('workers'){
         sh "docker run --rm ${imageName}-test npm run lint"
     }
 
-    stage('Unit Tests'){
-        sh "docker run --rm -v $PWD/coverage:/app/coverage ${imageName}-test npm run test"
-        publishHTML (target: [
-            allowMissing: false,
-            alwaysLinkToLastBuild: false,
-            keepAll: true,
-            reportDir: "$PWD/coverage/marketplace",
-            reportFiles: "index.html",
-            reportName: "Coverage Report"
-        ])
-    }
+//     stage('Unit Tests'){
+//         sh "docker run --rm -v $PWD/coverage:/app/coverage ${imageName}-test npm run test"
+//         publishHTML (target: [
+//             allowMissing: false,
+//             alwaysLinkToLastBuild: false,
+//             keepAll: true,
+//             reportDir: "$PWD/coverage/marketplace",
+//             reportFiles: "index.html",
+//             reportName: "Coverage Report"
+//         ])
+//     }
 
 //     stage('Static Code Analysis'){
 //         withSonarQubeEnv('sonarqube') {
@@ -39,10 +39,10 @@ node('workers'){
 //         }
 //     }
 
-//     stage('Build'){
-//         docker.build(imageName, '--build-arg ENVIRONMENT=sandbox .')
-//     }
-//
+    stage('Build'){
+        docker.build(imageName, '--build-arg ENVIRONMENT=sandbox .')
+    }
+
 //     stage('Push'){
 //         docker.withRegistry(registry, 'registry') {
 //             docker.image(imageName).push(commitID())
